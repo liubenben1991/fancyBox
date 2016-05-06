@@ -15,15 +15,26 @@
       .video-js {
           margin: auto;
       }
+      .my-video-dimensions {
+          width: auto;
+          height: auto;
+      }
+      #my-video {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+      }
   </style>
 </head>
 <body>
     <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="auto" height="auto"
     poster data-setup='{ "playbackRates": [0.5, 1, 1.5, 2] }'>
-        <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-        <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+        <!--<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+        <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>-->
         <!--<source src="video1.mp4" type='video/mp4'>-->
-        <!--<source src="video2.mp4" type='video/mp4'>-->
+        <source src="video2.mp4" type='video/mp4'>
         <p class="vjs-no-js">
             To view this video please enable JavaScript, and consider upgrading to a web browser that
             <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
@@ -31,57 +42,57 @@
     </video>
     <script src="../lib/video.js"></script>
     <script>
-        window.onload = (function(){
-            var ONCE_ORIGIN;
-            var VIDEO_ORIGIN_WIDTH;
-            var VIDEO_ORIGIN_HEIGHT;
+        // window.onload = (function(){
+        //     var ONCE_ORIGIN;
+        //     var VIDEO_ORIGIN_WIDTH;
+        //     var VIDEO_ORIGIN_HEIGHT;
             
-            return function(){
-                // switch for guarantee responsive code execute once
-                ONCE_ORIGIN = true;
+        //     return function(){
+        //     // switch for guarantee responsive code execute once
+        //     ONCE_ORIGIN = true;
+            
+        //     function video_center(id, parent){
+        //         var body_element = document.getElementsByTagName(parent)[0];
+        //         var my_video_element = document.getElementById(id);
+        //         var body_width = body_element.offsetWidth;
+        //         var my_video_width = my_video_element.offsetWidth;
+        //         var body_height = body_element.offsetHeight;
+        //         var my_video_height = my_video_element.offsetHeight;
                 
-                function video_center(id, parent){
-                    var body_element = document.getElementsByTagName(parent)[0];
-                    var my_video_element = document.getElementById(id);
-                    var body_width = body_element.offsetWidth;
-                    var my_video_width = my_video_element.offsetWidth;
-                    var body_height = body_element.offsetHeight;
-                    var my_video_height = my_video_element.offsetHeight;
+        //         if(ONCE_ORIGIN){
+        //             VIDEO_ORIGIN_WIDTH = my_video_element.offsetWidth;
+        //             VIDEO_ORIGIN_HEIGHT = my_video_element.offsetHeight;
+        //             ONCE_ORIGIN = false;
+        //         }
+        //         // responsive for video over width or height of screen
+        //         if(my_video_width >= body_width || my_video_height >= body_height){
+        //             var video_ratio = parseFloat(my_video_width / my_video_height);
+        //             var body_ratio = parseFloat(body_width / body_height);
                     
-                    if(ONCE_ORIGIN){
-                        VIDEO_ORIGIN_WIDTH = my_video_element.offsetWidth;
-                        VIDEO_ORIGIN_HEIGHT = my_video_element.offsetHeight;
-                        ONCE_ORIGIN = false;
-                    }
-                    // responsive for video over width or height of screen
-                    if(my_video_width >= body_width || my_video_height >= body_height){
-                        var video_ratio = parseFloat(my_video_width / my_video_height);
-                        var body_ratio = parseFloat(body_width / body_height);
-                        
-                        if(video_ratio >= body_ratio){
-                            var current_body_width = my_video_element.style.width = parseInt(body_width) + 'px';
-                            my_video_element.style.height = parseInt(parseInt(current_body_width) / video_ratio) + 'px';
-                        } else {
-                            var current_video_width = my_video_element.style.width = parseInt(body_height * video_ratio) + 'px';
-                            my_video_element.style.height = parseInt(parseInt(current_video_width) / video_ratio) + 'px';
-                        }
-                    } else {
-                        my_video_element.style.height = VIDEO_ORIGIN_HEIGHT + 'px';
-                        my_video_element.style.width = VIDEO_ORIGIN_WIDTH + 'px';
-                    }
-                    
-                    my_video_element.style.position = 'absolute';
-                    my_video_element.style.left = 0;
-                    my_video_element.style.right = 0;
-                    my_video_element.style.top = 0;
-                    my_video_element.style.bottom = 0;
-                }
+        //             if(video_ratio >= body_ratio){
+        //                 var current_body_width = my_video_element.style.width = parseInt(body_width) + 'px';
+        //                 my_video_element.style.height = parseInt(parseInt(current_body_width) / video_ratio) + 'px';
+        //             } else {
+        //                 var current_video_width = my_video_element.style.width = parseInt(body_height * video_ratio) + 'px';
+        //                 my_video_element.style.height = parseInt(parseInt(current_video_width) / video_ratio) + 'px';
+        //             }
+        //         } else {
+        //             my_video_element.style.height = VIDEO_ORIGIN_HEIGHT + 'px';
+        //             my_video_element.style.width = VIDEO_ORIGIN_WIDTH + 'px';
+        //         }
                 
-                setTimeout(function(){
-                    video_center('my-video', 'body');
-                },0)
-            }
-        })();
+        //         my_video_element.style.position = 'absolute';
+        //         my_video_element.style.left = 0;
+        //         my_video_element.style.right = 0;
+        //         my_video_element.style.top = 0;
+        //         my_video_element.style.bottom = 0;
+        //     }
+            
+        //     setTimeout(function(){
+        //         video_center('my-video', 'body');
+        //     },0)
+        // }
+        // })();
     </script>
 </body>
 </html>
